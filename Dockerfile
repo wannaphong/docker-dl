@@ -1,4 +1,4 @@
-FROM nvidia/cuda:12.1.0-cudnn8-devel-ubuntu22.04
+FROM pytorch/pytorch:2.5.1-cuda12.1-cudnn9-devel
 
 RUN ["/bin/bash", "-c", "echo I am using bash"]
 SHELL ["/bin/bash", "-c"]
@@ -13,6 +13,9 @@ ENV LC_ALL C.UTF-8
 ##############################################################################
 # Installation/Basic Utilities
 ##############################################################################
+# OPENMPI
+##############################################################################
+##############################################################################
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=America/Los_Angeles
 RUN apt-get update && \
@@ -23,13 +26,7 @@ RUN apt-get update && \
     curl wget vim tmux emacs less unzip \
     htop iftop iotop ca-certificates openssh-client openssh-server \
     rsync iputils-ping net-tools sudo \
-    llvm-11-dev
-##############################################################################
-# OPENMPI
-##############################################################################
-RUN apt-get --yes -qq update \
- && apt-get --yes -qq upgrade \
- && apt-get --yes -qq install \
+    llvm-11-dev \
                       bzip2 \
                       cmake \
                       cpio \
@@ -105,9 +102,8 @@ RUN pip install psutil \
         cupy-cuda11x \
         pyyaml \
         ipython
-RUN pip install torch==2.2.2 torchvision==0.17.2 torchaudio==2.2.2 --index-url https://download.pytorch.org/whl/cu121
 RUN pip install tensorboardX
-RUN pip install trl==0.16.1 transformers==4.51.3 numpy==1.26.4 bitsandbytes==0.45.5 peft==0.15.1
+RUN pip install trl==0.16.1 transformers==4.51.3 numpy==1.26.4 bitsandbytes==0.45.5 peft==0.15.1 flash-attn==2.7.4
 WORKDIR /workspace
 RUN echo I am using bash, which is now the default
 ENV SHELL=/bin/bash
