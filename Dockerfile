@@ -103,7 +103,7 @@ RUN pip install psutil \
         pyyaml \
         ipython
 RUN pip install tensorboardX
-RUN pip install trl==0.16.1 transformers==4.51.3 numpy==1.26.4 bitsandbytes==0.45.5 peft==0.15.1 flash-attn==2.7.4
+RUN pip install trl==0.16.1 transformers==4.51.3 numpy==1.26.4 bitsandbytes==0.45.5 peft==0.15.1 flash-attn==2.7.4.post1 deepspeed
 WORKDIR /workspace
 RUN echo I am using bash, which is now the default
 ENV SHELL=/bin/bash
