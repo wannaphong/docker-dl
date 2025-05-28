@@ -1,4 +1,4 @@
-FROM pytorch/pytorch:2.5.1-cuda12.1-cudnn9-devel
+FROM pytorch/pytorch:2.5.1-cuda12.4-cudnn9-devel
 
 RUN ["/bin/bash", "-c", "echo I am using bash"]
 SHELL ["/bin/bash", "-c"]
@@ -95,15 +95,20 @@ RUN pip install psutil \
         sphinx \
         sphinx_rtd_theme \
         scipy \
-        numpy==1.26.4 \
         scikit-learn \
         nvidia-ml-py3 \
         mpi4py \
         cupy-cuda11x \
         pyyaml \
-        ipython
-RUN pip install tensorboardX
-RUN pip install trl==0.16.1 transformers==4.51.3 numpy==1.26.4 bitsandbytes==0.45.5 peft==0.15.1 flash-attn==2.7.4.post1 deepspeed
+        ipython \
+        tensorboardX \
+        trl \
+        transformers \
+        numpy \
+        bitsandbytes \
+        peft \
+        flash-attn==2.7.4.post1 \
+        deepspeed
 WORKDIR /workspace
 RUN echo I am using bash, which is now the default
 ENV SHELL=/bin/bash
