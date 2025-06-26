@@ -105,8 +105,8 @@ RUN pip install psutil \
         trl \
         transformers \
         numpy \
-        bitsandbytes \
-        peft \
+        bitsandbytes>=0.41.0 \
+        peft>=0.6.0 \
         flash-attn==2.7.4.post1 \
         deepspeed
 WORKDIR /workspace
