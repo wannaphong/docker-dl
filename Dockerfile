@@ -108,7 +108,8 @@ RUN pip install psutil \
         bitsandbytes>=0.41.0 \
         peft>=0.6.0 \
         flash-attn==2.7.4.post1 \
-        deepspeed
+        deepspeed \
+        liger-kernel
 WORKDIR /workspace
 RUN echo I am using bash, which is now the default
 ENV SHELL=/bin/bash
