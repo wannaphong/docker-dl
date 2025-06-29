@@ -75,7 +75,9 @@ RUN apt-get update && \
         libpng-dev \
         screen \
         libaio-dev \
-        git
+        git \
+ && apt-get --yes -qq clean \
+ && rm -rf /var/lib/apt/lists/*
 RUN pip install psutil \
         yappi \
         cffi \
